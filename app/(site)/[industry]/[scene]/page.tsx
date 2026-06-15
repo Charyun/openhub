@@ -8,36 +8,6 @@ import { getIndustries, getScenesByIndustry, getPublishedProjects } from '@/lib/
 import { ProjectCard } from '@/components/project-card'
 import { Badge } from '@/components/ui/badge'
 
-export async function generateStaticParams() {
-  return [
-    { industry: 'life', scene: 'life-home' },
-    { industry: 'life', scene: 'life-food' },
-    { industry: 'life', scene: 'life-travel' },
-    { industry: 'productivity', scene: 'prod-pm' },
-    { industry: 'productivity', scene: 'prod-docs' },
-    { industry: 'productivity', scene: 'prod-auto' },
-    { industry: 'content', scene: 'content-video' },
-    { industry: 'content', scene: 'content-design' },
-    { industry: 'content', scene: 'content-audio' },
-    { industry: 'content', scene: 'content-write' },
-    { industry: 'business', scene: 'biz-ecom' },
-    { industry: 'business', scene: 'biz-crm' },
-    { industry: 'business', scene: 'biz-finance' },
-    { industry: 'education', scene: 'edu-lang' },
-    { industry: 'education', scene: 'edu-code' },
-    { industry: 'education', scene: 'edu-km' },
-    { industry: 'health', scene: 'health-fit' },
-    { industry: 'health', scene: 'health-mental' },
-    { industry: 'health', scene: 'health-chronic' },
-    { industry: 'smarthome', scene: 'home-auto' },
-    { industry: 'smarthome', scene: 'home-security' },
-    { industry: 'smarthome', scene: 'home-energy' },
-    { industry: 'gaming', scene: 'game-dev' },
-    { industry: 'gaming', scene: 'game-sim' },
-    { industry: 'gaming', scene: 'game-retro' },
-  ]
-}
-
 export default async function ScenePage({
   params,
 }: {

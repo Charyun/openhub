@@ -3,21 +3,11 @@ export const runtime = 'edge'
 import { notFound } from 'next/navigation'
 import { Star, ExternalLink, GitBranch } from 'lucide-react'
 import { getCloudflareEnv } from '@/lib/cloudflare'
-import { getProjectBySlug, getAllPublishedSlugs } from '@/lib/db'
+import { getProjectBySlug } from '@/lib/db'
 import { DeployBadge } from '@/components/deploy-badge'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-
-export async function generateStaticParams() {
-  try {
-    const { DB } = getCloudflareEnv()
-    const slugs = await getAllPublishedSlugs(DB)
-    return slugs.map(slug => ({ slug }))
-  } catch {
-    return []
-  }
-}
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

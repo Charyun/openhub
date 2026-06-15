@@ -8,14 +8,6 @@ import { getIndustries, getScenesByIndustry, getPublishedProjects } from '@/lib/
 import { ProjectCard } from '@/components/project-card'
 import { Badge } from '@/components/ui/badge'
 
-export async function generateStaticParams() {
-  return [
-    { industry: 'life' }, { industry: 'productivity' }, { industry: 'content' },
-    { industry: 'business' }, { industry: 'education' }, { industry: 'health' },
-    { industry: 'smarthome' }, { industry: 'gaming' },
-  ]
-}
-
 export default async function IndustryPage({ params }: { params: Promise<{ industry: string }> }) {
   const { industry: industryId } = await params
   const { DB } = getCloudflareEnv()
