@@ -1,0 +1,39 @@
+name: Collect GitHub Projects
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip push)'
+        required: false
+        default: 'false'
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run collector
+        run: python scripts/collect.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          COLLECT_WEBHOOK_URL: ${{ secrets.COLLECT_WEBHOOK_URL }}
+          COLLECT_WEBHOOK_SECRET: ${{ secrets.COLLECT_WEBHOOK_SECRET }}
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+
+      - name: Dry run (print config only)
+        run: python -c "import json; print(json.load(open('scripts/collect_config.json')))"
+        if: ${{ github.event.inputs.dry_run == 'true' }}
