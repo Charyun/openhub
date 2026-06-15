@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import { checkRequestAuth } from '@/lib/auth'
 
 export function middleware(req: NextRequest) {
+  // Skip auth check for the login page itself to avoid redirect loops
+  if (req.nextUrl.pathname === '/admin/login') {
+    return NextResponse.next()
+  }
   if (!checkRequestAuth(req)) {
     return NextResponse.redirect(new URL('/admin/login', req.url))
   }
