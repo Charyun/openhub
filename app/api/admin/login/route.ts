@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCloudflareContext } from '@opennextjs/cloudflare'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: NextRequest) {
   const { password } = await req.json() as { password?: string }
   const cfEnv = getCloudflareContext().env as unknown as Record<string, string>

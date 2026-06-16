@@ -25,7 +25,8 @@ export default function AdminLoginPage() {
       if (res.ok) {
         router.push('/admin')
       } else {
-        setError('密码错误')
+        const data = await res.json().catch(() => ({}))
+        setError(data.error ? `${res.status}: ${data.error}` : `Error ${res.status}`)
       }
     } finally {
       setLoading(false)
