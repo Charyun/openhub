@@ -6,7 +6,7 @@ pages_build_output_dir = ".vercel/output/static"
 [[d1_databases]]
 binding = "DB"
 database_name = "openhub"
-database_id = "PLACEHOLDER_REPLACE_WITH_D1_ID"
+database_id = "e7c27707-7f65-45ef-866d-d234a9b8feb8"
 
 [[r2_buckets]]
 binding = "R2"

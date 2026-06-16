@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { SearchBar } from '@/components/search-bar'
 
-export default function SiteLayout({ children }: { children: ReactNode }) {
+export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b sticky top-0 bg-background/95 backdrop-blur z-50">
