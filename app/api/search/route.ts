@@ -1,5 +1,3 @@
-export const runtime = 'edge'
-
 import { NextRequest } from 'next/server'
 import { getCloudflareEnv } from '@/lib/cloudflare'
 import { searchProjects, getPublishedProjects } from '@/lib/db'

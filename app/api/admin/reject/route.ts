@@ -1,5 +1,3 @@
-export const runtime = 'edge'
-
 import { NextRequest, NextResponse } from 'next/server'
 import { getCloudflareEnv } from '@/lib/cloudflare'
 import { rejectPendingProject } from '@/lib/db'

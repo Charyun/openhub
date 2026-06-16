@@ -1,5 +1,4 @@
-export const runtime = 'edge'
-export const revalidate = 86400
+export const dynamic = 'force-dynamic'
 
 import type { MetadataRoute } from 'next'
 import { getCloudflareEnv } from '@/lib/cloudflare'
